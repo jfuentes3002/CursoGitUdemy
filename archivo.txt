@@ -1,2 +1,4 @@
 Hola Mundo desde texto (Curso Udemy)!!!
 ... este archivo ha sido modificado desde el repositorio local, es sólo una prueba.
+
+Este archivo sólo será ocupado para realizar pruebas.
