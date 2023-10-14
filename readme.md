@@ -8,6 +8,8 @@ Se pretende dejar algunos comando y formas de uso.
 3. [Historial](#git-log)
 4. [Eliminar archivos de un repositorio](#git-rm)
 
+<p>&nbsp;</p>
+
 <a name="git-status"></a>
 ### Git Status
 
@@ -29,6 +31,7 @@ Untracked files:
 
 [Referencia](https://www.atlassian.com/es/git/tutorials/inspecting-a-repository)
 
+<p>&nbsp;</p>
 
 <a name="git-tag"></a>
 ### Git Tag
@@ -51,6 +54,8 @@ Al ejecutar este comando, se creará una nueva etiqueta anotada identificada com
 La ejecución de este comando es similar a la invocación anterior; sin embargo, esta versión del comando incluye la opción -m y un mensaje. Se trata de un método útil similar a <span style="color: green; font-weight: bold;">git commit -m</span> que creará inmediatamente una nueva etiqueta y renunciará a abrir el editor de texto local a favor de guardar el mensaje que se pasa con la opción -m.
 
 [Referencia](https://www.atlassian.com/es/git/tutorials/inspecting-a-repository/git-tag)
+
+<p>&nbsp;</p>
 
 <a name="git-log"></a>
 ### Git Log
@@ -92,6 +97,7 @@ Las funciones avanzadas de git log se pueden dividir en dos categorías: dar for
 
 [Referencia](https://www.atlassian.com/es/git/tutorials/git-log)
 
+<p>&nbsp;</p>
 
 <a name="git-rm"></a>
 ### Git Rm
@@ -164,6 +170,6 @@ La opción "quiet" oculta el resultado del comando git rm. El comando suele dar 
 <code>git rm --cached .</code>
 </pre>
 
-
+[Referencia](https://www.atlassian.com/es/git/tutorials/undoing-changes/git-rm)
 
 
