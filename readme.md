@@ -6,8 +6,7 @@ Se pretende dejar algunos comando y formas de uso.
 1. [Inspección de un repositorio](#git-status)
 2. [Etiquetado](#git-tag)
 3. [Historial](#git-log)
-4. [Collaboration](#collaboration)
-5. [FAQs](#faqs)
+4. [Eliminar archivos de un repositorio](#git-rm)
 
 <a name="git-status"></a>
 ### Git Status
@@ -94,15 +93,77 @@ Las funciones avanzadas de git log se pueden dividir en dos categorías: dar for
 [Referencia](https://www.atlassian.com/es/git/tutorials/git-log)
 
 
-<a name="collaboration"></a>
-### General Info
+<a name="git-rm"></a>
+### Git Rm
 
-<a name="faqs"></a>
-### General Info
+Una pregunta habitual al empezar a trabajar con Git es "¿Cómo le indico a Git que deje de hacer el seguimiento de un archivo (o varios archivos)?". El comando git rm se usa para eliminar archivos de un repositorio de Git. Se puede considerar que es lo contrario a lo que hace el comando git add.
+
+#### Descripción general
+El comando git rm se puede usar para eliminar archivos sueltos o un conjunto de ellos. La función principal de git rm es eliminar los archivos en seguimiento del índice de Git. Además, git rm se puede usar para eliminar archivos tanto del índice del entorno de ensayo como del directorio de trabajo. No existe la opción de eliminar un archivo solo del directorio de trabajo. Los archivos sobre los que se está trabajando deben ser idénticos a los archivos del HEAD actual. Si existe alguna discrepancia entre la versión del HEAD de un archivo y el índice del entorno de ensayo o la versión del árbol de trabajo, Git impedirá que se eliminen los archivos. Se trata de un mecanismo de seguridad para evitar la eliminación de cambios en progreso.
+
+#### Uso
+<pre>
+<code>&lt;nombre_archivo&gt;…​</code>
+</pre>
+Especifica los archivos de destino que se van a eliminar. El valor de opción puede ser un archivo individual, una lista de archivos delimitada por espacios file1 file2 file3 o un patrón global de archivos con caracteres comodín (~./directory/*).
+
+<p>&nbsp;</p>
+<pre>
+<code>-f
+--force​</code>
+</pre>
+La opción -f se usa para invalidar la comprobación de seguridad que Git realiza para garantizar que los archivos en HEAD coinciden con el contenido actual del índice del entorno de ensayo y del directorio de trabajo.
+
+<p>&nbsp;</p>
+<pre>
+<code>-n
+--dry-run​</code>
+</pre>
+La opción "dry run" es una protección que ejecutará el comando git rm, pero que no elimina realmente los archivos. En realidad, mostrará como resultado los archivos que habría eliminado.
+
+<p>&nbsp;</p>
+<pre>
+<code>-r​</code>
+</pre>
+La opción -r es la abreviatura de "recursive". Al trabajar en modo recursivo, git rm eliminará el directorio de destino y todo el contenido de dicho directorio.
+
+<p>&nbsp;</p>
+<pre>
+<code>--</code>
+</pre>
+La opción de separador sirve para distinguir de forma explícita entre una lista de nombres de archivo y los argumentos que se van a transmitir a git rm. Esto resulta útil si algunos de los nombres de archivo tienen una sintaxis que pueda ser errónea para otras opciones.
+
+<p>&nbsp;</p>
+<pre>
+<code>--cached</code>
+</pre>
+La opción "cached" especifica que la eliminación solo debe realizarse en el índice de entorno de ensayo. Los archivos del directorio de trabajo quedarán aparte.
+
+<p>&nbsp;</p>
+<pre>
+<code>--ignore-unmatch</code>
+</pre>
+Esto hace que el comando dé como resultado un estado de sigterm 0 aunque no haya archivos coincidentes. Este es un código de estado de nivel Unix. El código 0 indica una invocación correcta del comando. La opción --ignore-unmatch puede resultar útil cuando se usa git rm dentro de un script de shell mayor que deba fallar de forma elegante.
+
+<p>&nbsp;</p>
+<pre>
+<code>-q
+--quiet</code>
+</pre>
+La opción "quiet" oculta el resultado del comando git rm. El comando suele dar como resultado una línea para cada archivo eliminado.
+
+#### Ejemplo para sacar un archivo de la zona de stage
+
+<pre>
+<code>git rm --cached &lt;nombre_archivo&gt;</code>
+</pre>
+
+#### Ejemplo para sacar todos los archivos de la zona de stage
+
+<pre>
+<code>git rm --cached .</code>
+</pre>
 
 
-2)	Para sacar un archivo de la zona de stage se usa lo siguiente:
-git rm --cached <nombre_archivo>
 
-Para sacar todos los archivos de la zona de stage se usa lo siguiente:
-git rm --cached .
+
